@@ -2,8 +2,30 @@
 
 import React from 'react'
 import { Mail, Github, Linkedin, MapPin, Calendar, Code, Database, Globe, Award } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function Home() {
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  }
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const hoverScale = {
+    scale: 1.05,
+    transition: { duration: 0.2 }
+  }
+
   const skills = {
     languages: ['Python', 'TypeScript', 'Dart', 'JavaScript', 'Java', 'SQL'],
     frameworks: ['Flask', 'Django', 'Flutter', 'React', 'Next.js', 'NestJS', 'NodeJS'],
@@ -76,55 +98,109 @@ export default function Home() {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
-          <header className="text-center mb-12">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/20">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <motion.header 
+            className="text-center mb-12"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.div 
+              className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/20"
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+              whileHover={{ boxShadow: "0 25px 50px -12px rgba(124, 58, 237, 0.25)" }}
+            >
+              <motion.h1 
+                className="text-4xl md:text-6xl font-bold text-white mb-4"
+                variants={fadeIn}
+                transition={{ duration: 0.7 }}
+              >
                 Vivek Bhakhri
-              </h1>
-              <p className="text-xl md:text-2xl text-purple-200 mb-6">
+              </motion.h1>
+              <motion.p 
+                className="text-xl md:text-2xl text-purple-200 mb-6"
+                variants={fadeIn}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
                 Full-Stack Software Developer
-              </p>
-              <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-white">
-                <a href="mailto:vivekbhakhri739@gmail.com" className="flex items-center gap-2 hover:text-purple-300 transition-colors">
+              </motion.p>
+              <motion.div 
+                className="flex flex-col md:flex-row justify-center items-center gap-6 text-white"
+                variants={staggerContainer}
+              >
+                <motion.a 
+                  href="mailto:vivekbhakhri739@gmail.com" 
+                  className="flex items-center gap-2 hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={hoverScale}
+                >
                   <Mail size={20} />
                   vivekbhakhri739@gmail.com
-                </a>
-                <a href="tel:5142310175" className="flex items-center gap-2 hover:text-purple-300 transition-colors">
+                </motion.a>
+                <motion.a 
+                  href="tel:5142310175" 
+                  className="flex items-center gap-2 hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={hoverScale}
+                >
                   <span className="text-xl">📱</span>
-                  514-231-0175
-                </a>
-                <a href="https://linkedin.com/in/vivek-bhakhri" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-purple-300 transition-colors">
+                  Contact Me
+                </motion.a>
+                <motion.a 
+                  href="https://linkedin.com/in/vivek-bhakhri" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={hoverScale}
+                >
                   <Linkedin size={20} />
                   LinkedIn
-                </a>
-                <a href="https://github.com/vivekbhakhri" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-purple-300 transition-colors">
+                </motion.a>
+                <motion.a 
+                  href="https://github.com/vivekbhakhri" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={hoverScale}
+                >
                   <Github size={20} />
                   GitHub
-                </a>
-              </div>
-            </div>
-          </header>
+                </motion.a>
+              </motion.div>
+            </motion.div>
+          </motion.header>
 
-          {/* Objective Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Objective</h2>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20">
-              <p className="text-gray-300 leading-relaxed">
-                Passionate and versatile Full-Stack Developer with expertise in modern web and mobile technologies. 
-                Seeking to leverage my technical skills and creative problem-solving abilities to build innovative, 
-                user-centered applications that deliver exceptional experiences. Committed to continuous learning 
-                and growth in a collaborative environment where I can contribute to impactful projects and further 
-                develop my expertise in software development.
-              </p>
-            </div>
-          </section>
 
           {/* Skills Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Technical Skills</h2>
+          <motion.section 
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+          >
+            <motion.h2 
+              className="text-3xl font-bold text-white mb-8 text-center"
+              variants={fadeIn}
+            >
+              Technical Skills
+            </motion.h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {Object.entries(skills).map(([category, skillList]) => (
-                  <div key={category} className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20">
+              {Object.entries(skills).map(([category, skillList], index) => (
+                  <motion.div 
+                    key={category} 
+                    className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20"
+                    variants={fadeIn}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.25)",
+                      borderColor: "rgba(255, 255, 255, 0.4)"
+                    }}
+                  >
                     <div className="flex items-center gap-2 mb-4">
                       {category === 'languages' && <Code className="text-purple-400" size={24} />}
                       {category === 'frameworks' && <Globe className="text-purple-400" size={24} />}
@@ -133,29 +209,69 @@ export default function Home() {
                       <h3 className="text-lg font-semibold text-white capitalize">{category}</h3>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {skillList.map((skill) => (
-                          <span key={skill} className="bg-purple-600/30 text-purple-100 px-3 py-1 rounded-full text-sm">
-                      {skill}
-                    </span>
+                      {skillList.map((skill, skillIndex) => (
+                          <motion.span 
+                            key={skill} 
+                            className="bg-purple-600/30 text-purple-100 px-3 py-1 rounded-full text-sm"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                            whileHover={{ 
+                              backgroundColor: "rgba(124, 58, 237, 0.5)",
+                              scale: 1.05
+                            }}
+                          >
+                            {skill}
+                          </motion.span>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Experience Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Experience</h2>
+          <motion.section 
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl font-bold text-white mb-8 text-center"
+              variants={fadeIn}
+            >
+              Experience
+            </motion.h2>
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20">
+                  <motion.div 
+                    key={index} 
+                    className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20"
+                    variants={fadeIn}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.25)",
+                      borderColor: "rgba(255, 255, 255, 0.4)"
+                    }}
+                  >
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                      <div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                      >
                         <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                         <p className="text-purple-200 font-medium">{exp.company}</p>
-                      </div>
-                      <div className="text-purple-300 text-sm mt-2 md:mt-0">
+                      </motion.div>
+                      <motion.div 
+                        className="text-purple-300 text-sm mt-2 md:mt-0"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      >
                         <div className="flex items-center gap-1">
                           <Calendar size={16} />
                           {exp.period}
@@ -164,58 +280,168 @@ export default function Home() {
                           <MapPin size={16} />
                           {exp.location}
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
-                    <ul className="space-y-2">
+                    <motion.ul 
+                      className="space-y-2"
+                      initial="hidden"
+                      animate="visible"
+                      variants={staggerContainer}
+                      transition={{ staggerChildren: 0.1, delayChildren: 0.4 + index * 0.1 }}
+                    >
                       {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="text-gray-300 flex items-start gap-2">
+                          <motion.li 
+                            key={achIndex} 
+                            className="text-gray-300 flex items-start gap-2"
+                            variants={fadeIn}
+                            transition={{ duration: 0.3, delay: achIndex * 0.05 }}
+                          >
                             <span className="text-purple-400 mt-1">•</span>
                             {achievement}
-                          </li>
+                          </motion.li>
                       ))}
-                    </ul>
-                  </div>
+                    </motion.ul>
+                  </motion.div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Projects Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Projects</h2>
+          <motion.section 
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl font-bold text-white mb-8 text-center"
+              variants={fadeIn}
+            >
+              Projects
+            </motion.h2>
             <div className="grid md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20">
+                  <motion.div 
+                    key={index} 
+                    className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20"
+                    variants={fadeIn}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.25)",
+                      borderColor: "rgba(255, 255, 255, 0.4)"
+                    }}
+                  >
                     <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                      <span className="text-purple-300 text-sm">{project.date}</span>
+                      <motion.h3 
+                        className="text-xl font-semibold text-white"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }}
+                      >
+                        {project.title}
+                      </motion.h3>
+                      <motion.span 
+                        className="text-purple-300 text-sm"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
+                      >
+                        {project.date}
+                      </motion.span>
                     </div>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                          <span key={tech} className="bg-purple-600/30 text-purple-100 px-2 py-1 rounded text-sm">
-                      {tech}
-                    </span>
+                    <motion.div 
+                      className="flex flex-wrap gap-2 mb-4"
+                      initial="hidden"
+                      animate="visible"
+                      variants={staggerContainer}
+                      transition={{ staggerChildren: 0.05, delayChildren: 0.4 + index * 0.2 }}
+                    >
+                      {project.technologies.map((tech, techIndex) => (
+                          <motion.span 
+                            key={tech} 
+                            className="bg-purple-600/30 text-purple-100 px-2 py-1 rounded text-sm"
+                            variants={fadeIn}
+                            whileHover={{ 
+                              backgroundColor: "rgba(124, 58, 237, 0.5)",
+                              scale: 1.05
+                            }}
+                          >
+                            {tech}
+                          </motion.span>
                       ))}
-                    </div>
-                    <ul className="space-y-2">
+                    </motion.div>
+                    <motion.ul 
+                      className="space-y-2"
+                      initial="hidden"
+                      animate="visible"
+                      variants={staggerContainer}
+                      transition={{ staggerChildren: 0.1, delayChildren: 0.5 + index * 0.2 }}
+                    >
                       {project.description.map((desc, descIndex) => (
-                          <li key={descIndex} className="text-gray-300 flex items-start gap-2">
+                          <motion.li 
+                            key={descIndex} 
+                            className="text-gray-300 flex items-start gap-2"
+                            variants={fadeIn}
+                            transition={{ duration: 0.3, delay: descIndex * 0.05 }}
+                          >
                             <span className="text-purple-400 mt-1">•</span>
                             {desc}
-                          </li>
+                          </motion.li>
                       ))}
-                    </ul>
-                  </div>
+                    </motion.ul>
+                  </motion.div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Education Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Education</h2>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20">
-              <h3 className="text-xl font-semibold text-white">Computer Science Technician - Software Testing</h3>
-              <p className="text-purple-200 font-medium">Cégep de la Gaspésie et des Îles</p>
-              <div className="flex items-center gap-4 mt-2 text-purple-300 text-sm">
+          <motion.section 
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl font-bold text-white mb-8 text-center"
+              variants={fadeIn}
+            >
+              Education
+            </motion.h2>
+            <motion.div 
+              className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20"
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+              whileHover={{ 
+                y: -5, 
+                boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.25)",
+                borderColor: "rgba(255, 255, 255, 0.4)"
+              }}
+            >
+              <motion.h3 
+                className="text-xl font-semibold text-white"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                Computer Science Technician - Software Testing
+              </motion.h3>
+              <motion.p 
+                className="text-purple-200 font-medium"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                Cégep de la Gaspésie et des Îles
+              </motion.p>
+              <motion.div 
+                className="flex items-center gap-4 mt-2 text-purple-300 text-sm"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
                 <div className="flex items-center gap-1">
                   <Calendar size={16} />
                   May 2019 – May 2021
@@ -224,30 +450,94 @@ export default function Home() {
                   <MapPin size={16} />
                   Montreal, QC
                 </div>
-              </div>
-            </div>
-          </section>
+              </motion.div>
+            </motion.div>
+          </motion.section>
 
           {/* Footer */}
-          <footer className="text-center">
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20">
-              <p className="text-purple-200 mb-4">Let's build something amazing together!</p>
-              <div className="flex justify-center gap-6">
-                <a href="mailto:vivekbhakhri739@gmail.com" className="text-white hover:text-purple-300 transition-colors">
+          <motion.footer 
+            className="text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.div 
+              className="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20"
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+              whileHover={{ 
+                boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.25)",
+                borderColor: "rgba(255, 255, 255, 0.4)"
+              }}
+            >
+              <motion.p 
+                className="text-purple-200 mb-4"
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                Let's build something amazing together!
+              </motion.p>
+              <motion.div 
+                className="flex justify-center gap-6"
+                variants={staggerContainer}
+                transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
+              >
+                <motion.a 
+                  href="mailto:vivekbhakhri739@gmail.com" 
+                  className="text-white hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: 5,
+                    color: "rgba(216, 180, 254, 1)" 
+                  }}
+                >
                   <Mail size={24} />
-                </a>
-                <a href="tel:5142310175" className="text-white hover:text-purple-300 transition-colors">
+                </motion.a>
+                <motion.a 
+                  href="tel:5142310175" 
+                  className="text-white hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: 5,
+                    color: "rgba(216, 180, 254, 1)" 
+                  }}
+                >
                   <span className="text-xl">📱</span>
-                </a>
-                <a href="https://linkedin.com/in/vivek-bhakhri" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-300 transition-colors">
+                </motion.a>
+                <motion.a 
+                  href="https://linkedin.com/in/vivek-bhakhri" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: 5,
+                    color: "rgba(216, 180, 254, 1)" 
+                  }}
+                >
                   <Linkedin size={24} />
-                </a>
-                <a href="https://github.com/vivekbhakhri" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-300 transition-colors">
+                </motion.a>
+                <motion.a 
+                  href="https://github.com/vivekbhakhri" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white hover:text-purple-300 transition-colors"
+                  variants={fadeIn}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: 5,
+                    color: "rgba(216, 180, 254, 1)" 
+                  }}
+                >
                   <Github size={24} />
-                </a>
-              </div>
-            </div>
-          </footer>
+                </motion.a>
+              </motion.div>
+            </motion.div>
+          </motion.footer>
         </div>
       </div>
   )
