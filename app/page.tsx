@@ -3,6 +3,7 @@
 import React from 'react'
 import { Mail, Github, Linkedin, MapPin, Calendar, Code, Database, Globe, Award } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function Home() {
   // Animation variants
@@ -124,12 +125,12 @@ export default function Home() {
               >
                 Full-Stack Software Developer
               </motion.p>
-              <motion.div 
+              <motion.div
                 className="flex flex-col md:flex-row justify-center items-center gap-6 text-white"
                 variants={staggerContainer}
               >
-                <motion.a 
-                  href="mailto:vivekbhakhri739@gmail.com" 
+                <motion.a
+                  href="mailto:vivekbhakhri739@gmail.com"
                   className="flex items-center gap-2 hover:text-purple-300 transition-colors"
                   variants={fadeIn}
                   whileHover={hoverScale}
@@ -137,8 +138,8 @@ export default function Home() {
                   <Mail size={20} />
                   vivekbhakhri739@gmail.com
                 </motion.a>
-                <motion.a 
-                  href="tel:5142310175" 
+                <motion.a
+                  href="tel:5142310175"
                   className="flex items-center gap-2 hover:text-purple-300 transition-colors"
                   variants={fadeIn}
                   whileHover={hoverScale}
@@ -146,10 +147,10 @@ export default function Home() {
                   <span className="text-xl">📱</span>
                   Contact Me
                 </motion.a>
-                <motion.a 
-                  href="https://linkedin.com/in/vivek-bhakhri" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <motion.a
+                  href="https://linkedin.com/in/vivek-bhakhri"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-purple-300 transition-colors"
                   variants={fadeIn}
                   whileHover={hoverScale}
@@ -157,10 +158,10 @@ export default function Home() {
                   <Linkedin size={20} />
                   LinkedIn
                 </motion.a>
-                <motion.a 
-                  href="https://github.com/vivekbhakhri" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <motion.a
+                  href="https://github.com/vivekbhakhri"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-purple-300 transition-colors"
                   variants={fadeIn}
                   whileHover={hoverScale}
@@ -169,9 +170,73 @@ export default function Home() {
                   GitHub
                 </motion.a>
               </motion.div>
+
+              <motion.h2
+                  className="text-3xl font-bold text-white mb-8 text-center"
+                  variants={fadeIn}
+              >
+              </motion.h2>
+              <motion.div
+                  className="bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-lg border border-white/20 flex flex-col md:flex-row gap-8 items-center"
+                  variants={fadeIn}
+                  transition={{ duration: 0.5 }}
+                  whileHover={{
+                    boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.25)",
+                    borderColor: "rgba(255, 255, 255, 0.4)"
+                  }}
+              >
+                <motion.div
+                    className="w-48 h-48 rounded-full overflow-hidden border-4 border-purple-500/30 flex-shrink-0 mx-auto md:mx-0"
+                    variants={fadeIn}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                >
+                  <Image
+                      src="/profile-image.jpg"
+                      alt="Profile Picture"
+                      width={192}
+                      height={192}
+                      className="object-cover w-full h-full"
+                  />
+                </motion.div>
+
+                <motion.div
+                    className="flex-1"
+                    variants={fadeIn}
+                    transition={{ duration: 0.7, delay: 0.2 }}
+                >
+
+                  <motion.div
+                      className="space-y-4 text-gray-300"
+                      variants={staggerContainer}
+                  >
+                    <motion.p variants={fadeIn}>
+                      I'm a dedicated software developer with a passion for creating elegant, efficient solutions to complex problems. With expertise in both frontend and backend technologies, I bring a holistic approach to software development.
+                    </motion.p>
+                    <motion.p variants={fadeIn}>
+                      My journey in tech began with a curiosity about how things work, which evolved into a career building applications that make a difference. I thrive in collaborative environments where innovation is valued and continuous learning is encouraged.
+                    </motion.p>
+                    <motion.p variants={fadeIn}>
+                      When I'm not coding, you can find me exploring new technologies, working on personal projects, or enjoying outdoor activities to maintain a healthy work-life balance.
+                    </motion.p>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
+
             </motion.div>
+
           </motion.header>
 
+          {/* About Section */}
+          <motion.section 
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+          </motion.section>
 
           {/* Skills Section */}
           <motion.section 
